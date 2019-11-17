@@ -1,0 +1,73 @@
+﻿<Window x:Class="GGLobbyBuddy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GGLobbyBuddy"
+        mc:Ignorable="d"
+        Title="GG Lobby Buddy" Width="210" ResizeMode="NoResize" SizeToContent="Height">
+    <Border Padding="10 0 10 10">
+        <StackPanel>
+            
+            <TextBlock Text="Status" Margin="0 0 0 0"/>
+            
+            <TextBox Name="StatusBox"
+                     Text="Not Connected"
+                     Margin="0 0 5 0"
+                     IsEnabled="False"
+                     Padding="3"/>
+            
+            <TextBlock Text="Lobby ID" Margin="0 5 0 0"/>
+            
+            <TextBox Name="LobbyId"
+                     IsEnabled="False"
+                     Padding="3" 
+                     Margin="0 0 5 0"/>
+
+            <StackPanel Margin="0 5 0 0">
+                <TextBlock Text="Player Current / Max"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBox Name="PlayerCurrent"
+                             Grid.Column="0" 
+                             IsEnabled="False"
+                             Padding="3"
+                             Text="0"
+                             TextAlignment="Center"
+                             VerticalAlignment="Center"/>
+                    
+                    <Slider Name="PlayerMaxSlider"
+                            Grid.Column="1"
+                            ValueChanged="OnLobbySizeSliderChanged"
+                            Minimum="2" Maximum="8" Value="8"
+                            TickFrequency="1"
+                            TickPlacement="Both"
+                            IsSnapToTickEnabled="True"
+                            Margin="5 0 5 0"/>
+                    
+                    <TextBox Name="PlayerMax"
+                             Grid.Column="2" Padding="3" Text="8"
+                             TextChanged="OnLobbySizeTextChanged"
+                             TextAlignment="Center"
+                             VerticalAlignment="Center"/>
+                </Grid>
+                
+                <CheckBox Name="AutoAccept"
+                          Padding="5 0 0 0"
+                          Margin="-1 5 0 0"
+                          Content="Auto Accept Join Requests"/>
+                
+                <Button Name="CopyLinkButton"
+                        Content="Copy Invite Link"
+                        Click="OnCopyInviteLinkClick"
+                        Padding="5 3" 
+                        Margin="0 5 0 0"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>
